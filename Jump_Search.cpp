@@ -1,20 +1,40 @@
-﻿// Jump_Search.cpp : Bu dosya 'main' işlevi içeriyor. Program yürütme orada başlayıp biter.
-//
-
-#include <iostream>
-
+﻿#include<iostream>
+#include<cmath>
+using namespace std;
 int main()
 {
-    std::cout << "Hello World!\n";
+	int dizi[5] = { 6,9,3,5,1 };
+	int aranan;
+	cout << " aranan sayiyi giriniz " << endl;
+	cin >> aranan;
+	int adim = sqrt(5);
+	int onceki = 0;
+	while (dizi[min(adim, 5) - 1] < aranan)
+	{
+		onceki = adim;
+		adim += sqrt(5);
+		if (onceki >= 5)
+		{
+			cout << " sayi dizide bulunamadi " << endl;
+			return 0;
+		}
+	}
+	while (dizi[onceki] < aranan)
+	{
+		onceki++;
+		if (onceki == min(adim, 5))
+		{
+			cout << " sayi dizide bulunamadi " << endl;
+			return 0;
+		}
+	}
+	if (dizi[onceki] == aranan)
+	{
+		cout << " sayi " << onceki << ". indiste bulundu " << endl;
+	}
+	else
+	{
+		cout << " sayi dizide bulunamadi " << endl;
+	}
+	return 0;
 }
-
-// Programı çalıştır: Ctrl + F5 veya Hata Ayıkla > Hata Ayıklamadan Başlat menüsü
-// Programda hata ayıkla: F5 veya Hata Ayıkla > Hata Ayıklamayı Başlat menüsü
-
-// Kullanmaya Başlama İpuçları: 
-//   1. Dosyaları eklemek/yönetmek için Çözüm Gezgini penceresini kullanın
-//   2. Kaynak denetimine bağlanmak için Takım Gezgini penceresini kullanın
-//   3. Derleme çıktısını ve diğer iletileri görmek için Çıktı penceresini kullanın
-//   4. Hataları görüntülemek için Hata Listesi penceresini kullanın
-//   5. Yeni kod dosyaları oluşturmak için Projeye Git > Yeni Öğe ekle veya varolan kod dosyalarını projeye eklemek için Proje > Var Olan Öğeyi Ekle adımlarını izleyin
-//   6. Bu projeyi daha sonra yeniden açmak için Dosya > Aç > Proje'ye gidip .sln uzantılı dosyayı seçin
